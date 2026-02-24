@@ -240,7 +240,17 @@ public final class GameState {
     @StudentImplementationRequired("P1.5")
     public boolean canAddCardToTreasureTrail(final Color color, final PathCard card) {
         // TODO: P1.5
-        return org.tudalgo.algoutils.student.Student.crash("P1.5 - Remove if implemented");
+        boolean result = false;
+        List<PathCard> cards = getTreasureTrail(color);
+        if(cards.isEmpty()) {
+            return true;
+        }
+        Set<Tile> tiles = evaluateTreasureTrail(color);
+        Set<Tile> checks = card.filter(tiles);
+        if(!tiles.containsAll(checks) && !checks.isEmpty()) {
+            return  true;
+        }
+        return result;
     }
 
     /**
