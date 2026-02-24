@@ -94,7 +94,10 @@ public class TileImpl implements Tile {
     @StudentImplementationRequired("P1.4")
     public Set<Tile> getNeighbours() {
         // TODO: P1.4
-        return org.tudalgo.algoutils.student.Student.crash("P1.4 - Remove if implemented");
+        return TilePosition.neighbours(position).stream()
+            .map(x->{
+                return getHexGrid().getTileAt(x);
+            }).collect(Collectors.toSet());
     }
 
     @Override
@@ -142,7 +145,14 @@ public class TileImpl implements Tile {
     @StudentImplementationRequired("P1.4")
     private boolean isNear(final Predicate<Optional<Tile>> predicate, final int radius) {
         // TODO: P1.4
-        return org.tudalgo.algoutils.student.Student.crash("P1.4 - Remove if implemented");
+        boolean result = false;
+        for (int i = 0; i < radius; i++) {
+           result = TilePosition.forEachRing(this.position, i, x-> predicate.test(Optional.of(getHexGrid().getTileAt(x))));
+           if (result) {
+               break;
+           }
+        }
+        return result;
     }
 
     @Override
