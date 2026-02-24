@@ -1,0 +1,42 @@
+.root {
+    -fx-background-color: #141418ff;
+    -fx-padding: 20px;
+}
+
+.button {
+    -fx-font-size: 12pt;
+    -fx-padding: 10px 25px;
+}
+
+.start-game-button {
+    -fx-background-color: #007acc;
+}
+
+.start-game-button:hover {
+    -fx-background-color: #005f99;
+}
+
+.start-game-button:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(#007acc, 30%), 3, 1.0, 0, 0);
+}
+
+.color-picker {
+    -fx-color-label-visible: false;
+    -fx-padding: 8px;
+}
+
+.color-picker .picker-color-rect {
+    -fx-stroke: null;
+    -fx-arc-width: 6px;
+    -fx-arc-height: 6px;
+    -fx-scale-x: 1.7;
+    -fx-scale-y: 1.7;
+}
+
+.color-picker .color-palette {
+    -fx-background-color: #1f1f2e;
+}
+
+.color-picker .separator {
+    -fx-background-color: white;
+}

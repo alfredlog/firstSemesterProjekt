@@ -1,0 +1,364 @@
+@font-face {
+    font-family: "Roboto Merged Icons Black";
+    font-style: normal;
+    font-weight: 900;
+    src: url("/fonts/Roboto-Merged-Icons-Black.ttf");
+}
+
+@font-face {
+    font-family: "Roboto Merged Icons";
+    font-style: normal;
+    font-weight: normal;
+    src: url("/fonts/Roboto-Merged-Icons.ttf");
+}
+
+* {
+    -selectable-color: gray;
+    -selectable-tile-color: red;
+    -selected-color: white;
+    -highlight-color: lime;
+    -fx-font-family: "Roboto Merged Icons";
+    -background-fill: #1f1f2e;
+    -button-fill: #2a2a3b;
+    -button-hover: #3a3a4f;
+    -button-pressed: #1d1d29;
+}
+
+.container {
+    -fx-padding: 10px;
+}
+
+.hex-grid {
+    -fx-background-color: #1965B0;
+}
+
+.hex-tile {
+    -fx-shape: "m 280, 75 0, 150 -130, 75 L 20, 225 20, 75 150, -0 Z";
+    -fx-border-color: #000000;
+    -fx-border-width: 0.3em;
+}
+
+.highlighted,
+.selectable {
+    -fx-border-width: 0.3em;
+}
+
+.selectable {
+    -fx-stroke: -selectable-color;
+    -fx-border-color: transparent;
+}
+
+.selected {
+    -fx-stroke: -selected-color;
+}
+
+.hex-tile.selectable,
+.card-pane.selectable {
+    -fx-border-color: -selectable-tile-color;
+}
+
+.highlighted,
+.selectable:hover,
+.selectable:focus,
+.selectable:focused,
+.hex-tile.selectable:hover,
+.hex-tile.selectable:focus,
+.card-pane.selectable:hover,
+.card-pane.selectable:focus {
+    -fx-stroke: -highlight-color;
+    -fx-border-color: -highlight-color;
+}
+
+.selectable.selected,
+.selectable:selected {
+    -fx-border-color: -selectable-color;
+}
+
+.highlighted-label.label .text {
+    -fx-font-family: "Roboto Merged Icons Black";
+    -fx-font-weight: 900;
+    -fx-font-size: 3em;
+    -fx-fill: white;
+    -fx-stroke: black;
+    -fx-stroke-width: 1px;
+}
+
+.bold,
+.bold .text {
+    -fx-font-family: "Roboto Merged Icons Black";
+    -fx-font-weight: 900;
+}
+
+.selected.label .text {
+    -fx-font-size: 4em;
+    -fx-font-weight: 900;
+    -fx-stroke: rgb(0, 0, 0);
+    -fx-stroke-width: 2px;
+    -fx-fill: rgb(0, 251, 255);
+}
+
+
+.toggle-button {
+    -fx-background-color: -button-fill;
+    -fx-background-radius: 8px;
+    -fx-padding: 10px;
+    -fx-font-size: 12pt;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+    -fx-border-width: 3;
+    -fx-border-radius: 8px;
+    -fx-cursor: hand;
+}
+
+.toggle-button:hover {
+    -fx-background-color: -button-hover;
+}
+
+.toggle-button:selected {
+    -fx-border-color: #007acc;
+    -fx-background-color: -button-pressed;
+}
+
+.toggle-button:pressed {
+    -fx-background-color: -button-pressed;
+}
+
+.toggle-button:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(-button-fill, 30%), 3, 1.0, 0, 0);
+}
+
+.text-title {
+    -fx-font-size: 24pt;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Roboto Merged Icons Black";
+    -fx-padding: 15px 0;
+    -fx-alignment: center;
+}
+
+.button {
+    -fx-background-color: -button-fill;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12pt;
+    -fx-font-family: "Roboto Merged Icons";
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: -button-hover;
+}
+
+.button:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(-button-fill, 30%), 3, 1.0, 0, 0);
+}
+
+.button:pressed {
+    -fx-background-color: -button-pressed;
+}
+
+.combo-box {
+    -fx-background-color: -button-fill;
+    -fx-text-fill: #ffffff;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #3b3b4a;
+    -fx-font-size: 12pt;
+    -fx-cursor: hand;
+}
+
+.combo-box>.list-cell {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-padding: 10px;
+}
+
+.combo-box .combo-box-popup .list-cell {
+    -fx-background-color: -button-fill;
+    -fx-text-fill: white;
+    -fx-padding: 8px;
+    -fx-border-color: derive(-button-fill, -10%);
+    -fx-border-width: 0 0 1px 0;
+}
+
+.combo-box .combo-box-popup {
+    -fx-background-color: -button-fill;
+    -fx-border-color: derive(-button-fill, -10%);
+}
+
+.combo-box .combo-box-popup .list-cell:hover {
+    -fx-background-color: -button-hover;
+    -fx-cursor: hand;
+}
+
+.combo-box:hover {
+    -fx-background-color: -button-hover;
+}
+
+.combo-box:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(-button-fill, 30%), 3, 1.0, 0, 0);
+}
+
+.combo-box .text-input {
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-font-size: 12pt;
+    -fx-background-color: tansparent;
+}
+
+.card-pane {
+    -fx-border-color: black;
+    -fx-border-radius: 0.5em;
+    -fx-border-width: 0.3em;
+    -fx-background-radius: 0.7em;
+    -fx-padding: 5px;
+}
+
+.box {
+    -fx-background-color: rgba(0, 0, 0, 0.5);
+    -fx-padding: 8px;
+    -fx-background-radius: 8px;
+    -fx-text-fill: white;
+}
+
+.box .label {
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+}
+
+.box.confirmation-overlay {
+    -fx-background-color: -background-fill;
+}
+
+.box.error-box {
+    -fx-background-color: darkRed;
+    -fx-text-fill: white;
+}
+
+.close-button {
+    -fx-background-color: transparent;
+}
+
+.close-button:hover {
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+}
+
+.button-yes {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-padding: 5 15;
+    -fx-background-radius: 10;
+}
+
+.button-yes:hover {
+    -fx-background-color: #45a049;
+}
+
+.button-yes:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(#4CAF50, 30%), 3, 1.0, 0, 0);
+}
+
+.button-no {
+    -fx-background-color: #F44336;
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+    -fx-padding: 5 15;
+    -fx-background-radius: 10;
+    -fx-cursor: hand;
+}
+
+.button-no:hover {
+    -fx-background-color: #e53935;
+}
+
+.button-no:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(#F44336, 30%), 3, 1.0, 0, 0);
+}
+
+.button-yes:pressed,
+.button-no:pressed {
+    -fx-background-color: rgba(0, 0, 0, 0.25);
+}
+
+.text-field {
+    -fx-background-color: -background-fill;
+    -fx-text-fill: #ffffff;
+    -fx-padding: 10px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #3b3b4a;
+    -fx-border-width: 1px;
+    -fx-font-size: 12pt;
+    -fx-prompt-text-fill: #757575;
+}
+
+.text-field:focused {
+    -fx-effect: dropshadow(three-pass-box, derive(-button-fill, 30%), 3, 1.0, 0, 0);
+}
+
+.scroll-bar {
+    -fx-background-color: -background-fill;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+    -fx-border-color: -background-fill;
+    -fx-border-width: 0px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: -background-fill;
+    -fx-border-width: 0px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -button-fill;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 8px;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: -button-hover;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: -button-fill;
+    -fx-border-color: -background-fill;
+}
+
+.scroll-bar:vertical .decrement-button {
+    -fx-border-radius: 8px 8px 0 0;
+    -fx-background-radius: 8px 8px 0 0;
+}
+
+.scroll-bar:vertical .increment-button {
+    -fx-border-radius: 0 0 8px 8px;
+    -fx-background-radius: 0 0 8px 8px;
+}
+
+.scroll-bar:horizontal .decrement-button {
+    -fx-border-radius: 8px 0 0 8px;
+    -fx-background-radius: 8px 0 0 8px;
+}
+
+.scroll-bar:horizontal .increment-button {
+    -fx-border-radius: 0 8px 8px 0;
+    -fx-background-radius: 0 8px 8px 0;
+}
+
+.scroll-bar .increment-button:hover,
+.scroll-bar .decrement-button:hover {
+    -fx-background-color: -button-hover;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-background-color: white;
+}
