@@ -209,7 +209,15 @@ public class HexGridImpl implements HexGrid {
     @StudentImplementationRequired("P1.3")
     public void spawnAmulets() {
         // TODO: P1.3
-        org.tudalgo.algoutils.student.Student.crash("P1.3 - Remove if implemented");
+        structures.values().stream()
+            .filter(x->x.getType() == Structure.Type.STATUE)
+            .map(x->{
+                return (Statue) x;
+            }).forEach(x->{
+                x.spawnAmulet();
+                x.turn();
+            });
+
     }
 
     @Override
