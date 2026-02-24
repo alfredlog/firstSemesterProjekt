@@ -13,6 +13,5 @@ public class Main {
      */
     public static void main(final String[] args) {
         Application.launch(MyApplication.class, args);
-        System.out.println("hello");
     }
 }

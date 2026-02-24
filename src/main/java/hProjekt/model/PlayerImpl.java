@@ -48,7 +48,7 @@ public class PlayerImpl implements Player {
     @StudentImplementationRequired("P1.1")
     public HexGrid getHexGrid() {
         // TODO: P1.1
-        return org.tudalgo.algoutils.student.Student.crash("P1.1 - Remove if implemented");
+        return hexGrid;
     }
 
     @Override
@@ -65,49 +65,53 @@ public class PlayerImpl implements Player {
     @StudentImplementationRequired("P1.1")
     public String getName() {
         // TODO: P1.1
-        return org.tudalgo.algoutils.student.Student.crash("P1.1 - Remove if implemented");
+        return name;
     }
 
     @Override
     @StudentImplementationRequired("P1.1")
     public int getID() {
         // TODO: P1.1
-        return org.tudalgo.algoutils.student.Student.crash("P1.1 - Remove if implemented");
+        return id;
     }
 
     @Override
     @StudentImplementationRequired("P1.1")
     public Color getColor() {
         // TODO: P1.1
-        return org.tudalgo.algoutils.student.Student.crash("P1.1 - Remove if implemented");
+        return color;
     }
 
     @Override
     @StudentImplementationRequired("P1.1")
     public boolean isAi() {
         // TODO: P1.1
-        return org.tudalgo.algoutils.student.Student.crash("P1.1 - Remove if implemented");
+        return aiController!=null;
     }
 
     @Override
     @StudentImplementationRequired("P1.2")
     public int getAmulets() {
         // TODO: P1.2
-        return org.tudalgo.algoutils.student.Student.crash("P1.2 - Remove if implemented");
+        return amulets;
     }
 
     @Override
     @StudentImplementationRequired("P1.2")
     public void addAmulets(final int amount) {
         // TODO: P1.2
-        org.tudalgo.algoutils.student.Student.crash("P1.2 - Remove if implemented");
+        amulets += amount;
     }
 
     @Override
     @StudentImplementationRequired("P1.2")
     public boolean removeAmulets(final int amount) {
         // TODO: P1.2
-        return org.tudalgo.algoutils.student.Student.crash("P1.2 - Remove if implemented");
+        if(amount<0 || amulets < amount){
+            return false;
+        }
+        amulets-=amount;
+        return true;
     }
 
     @Override
