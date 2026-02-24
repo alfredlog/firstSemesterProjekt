@@ -48,7 +48,14 @@ public class Statue extends StructureImpl {
     @StudentImplementationRequired("P1.3")
     public void turn() {
         // TODO: P1.3
-        org.tudalgo.algoutils.student.Student.crash("P1.3 - Remove if implemented");
+        switch (direction) {
+            case EAST ->  this.direction = TilePosition.EdgeDirection.SOUTH_EAST;
+            case SOUTH_EAST ->   this.direction = TilePosition.EdgeDirection.SOUTH_WEST;
+            case WEST ->  this.direction = TilePosition.EdgeDirection.NORTH_WEST;
+            case NORTH_WEST ->   this.direction = TilePosition.EdgeDirection.NORTH_EAST;
+            case NORTH_EAST ->    this.direction = TilePosition.EdgeDirection.EAST;
+        }
+
     }
 
     /**
@@ -63,6 +70,15 @@ public class Statue extends StructureImpl {
     @StudentImplementationRequired("P1.3")
     public void spawnAmulet() {
         // TODO: P1.3
-        org.tudalgo.algoutils.student.Student.crash("P1.3 - Remove if implemented");
+        TilePosition vorTilePosition = direction.position;
+        TilePosition tilePosition = TilePosition.neighbour(vorTilePosition, direction);
+        Tile tile = getHexGrid().getTileAt(tilePosition);
+        while (!tile.isAtCoast()) {
+            vorTilePosition = tilePosition;
+            tilePosition = TilePosition.neighbour(vorTilePosition, direction);
+            tile = getHexGrid().getTileAt(tilePosition);
+        }
+        tile = getHexGrid().getTileAt(vorTilePosition);
+        tile.setHasAmulet(true);
     }
 }
