@@ -2,14 +2,8 @@ package hProjekt.model;
 
 import static hProjekt.Config.RANDOM;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -187,7 +181,8 @@ public final class GameState {
     @StudentImplementationRequired("P1.5")
     public List<PathCard> getTreasureTrail(final Color color) {
         // TODO: P1.5
-        return org.tudalgo.algoutils.student.Student.crash("P1.5 - Remove if implemented");
+        return treasureTrails.entrySet().stream().filter(x->x.getKey()==color)
+            .flatMap(y->y.getValue().stream()).toList();
     }
 
     /**
@@ -209,7 +204,25 @@ public final class GameState {
     @StudentImplementationRequired("P1.5")
     public Set<Tile> evaluateTreasureTrail(final Color color) {
         // TODO: P1.5
-        return org.tudalgo.algoutils.student.Student.crash("P1.5 - Remove if implemented");
+        int i=0;
+        Set<Tile> set = grid.getTiles().entrySet().stream().map(x->x.getValue()).collect(Collectors.toSet());
+        Set<Tile> result =getTreasureTrail(color).stream()
+            .flatMap(x->x.filter(set).stream())
+            .collect(Collectors.toSet());
+        List<Tile> tile2 = treasurePositions.entrySet().stream().filter(x->x.getKey()==color)
+            .flatMap(x->x.getValue().stream()).toList();
+        for(Tile tile : result) {
+            if(tile2.contains(tile)) {
+                i++;
+            }
+        }
+        if(result.size()==i) {
+            return treasurePositions.entrySet().stream().filter(x->x.getKey()==color)
+                .flatMap(y->y.getValue().stream()).collect(Collectors.toSet());
+        }
+        else{
+            return result;
+        }
     }
 
     /**
