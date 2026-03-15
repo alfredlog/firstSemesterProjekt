@@ -461,7 +461,18 @@ public class PlayerController {
     @StudentImplementationRequired("P2.3")
     public void acceptCurse() {
         // TODO: P2.3
-        org.tudalgo.algoutils.student.Student.crash("P2.3 - Remove if implemented");
+        if(player.getAmulets()!=0){
+            player.removeAmulets(1);
+        }
+        else{
+            GoldCard goldCard = player.getGoldCards().stream()
+                .sorted(Comparator.comparing((GoldCard x) ->{
+                    return x.value();
+                }).reversed())
+                .findFirst().orElse(null);
+
+
+        }
     }
 
     /**
