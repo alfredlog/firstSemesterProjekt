@@ -361,7 +361,13 @@ public class PlayerController {
     @StudentImplementationRequired("P2.2")
     public void playCard(final PathCard card, final Color trailColor) throws IllegalActionException {
         // TODO: P2.2
-        org.tudalgo.algoutils.student.Student.crash("P2.2 - Remove if implemented");
+        if(getState().addCardToTreasureTrail(trailColor, card) && player.getPathCards().contains(card)) {
+            player.getPathCards().remove(card);
+            drawPathCard();
+        }
+        else{
+            throw new IllegalActionException("...");
+        }
     }
 
     /**
