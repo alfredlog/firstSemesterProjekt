@@ -7,7 +7,9 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.stream.Collectors;
 
+import hProjekt.model.grid.*;
 import org.tudalgo.algoutils.student.annotation.DoNotTouch;
 import org.tudalgo.algoutils.student.annotation.StudentImplementationRequired;
 
@@ -22,13 +24,11 @@ import hProjekt.model.cards.GoldCard;
 import hProjekt.model.cards.PathCard;
 import hProjekt.model.cards.RemoveTileCard;
 import hProjekt.model.cards.TreasureCard;
-import hProjekt.model.grid.Structure;
-import hProjekt.model.grid.Tile;
-import hProjekt.model.grid.TilePosition;
-import hProjekt.model.grid.Types;
 import javafx.beans.property.Property;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.paint.Color;
+
+import javax.swing.text.Position;
 
 /**
  * The PlayerController class represents a controller for a {@link Player} in
@@ -284,8 +284,11 @@ public class PlayerController {
      */
     @StudentImplementationRequired("P2.1")
     public Set<Tile> getDrivableTiles() {
-        // TODO: P2.1
-        return org.tudalgo.algoutils.student.Student.crash("P2.1 - Remove if implemented");
+         // TODO: P2.1
+        Tile tile = player.getHexGrid().getTileAt(player.getPosition());
+        return player.getHexGrid().getTiles().entrySet().stream().map(Map.Entry::getValue)
+            .filter(tile1 -> tile1.getArea() == tile.getArea() || tile.getNeighbours().contains(tile1))
+            .collect(Collectors.toSet());
     }
 
     /**
