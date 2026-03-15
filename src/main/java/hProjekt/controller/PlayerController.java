@@ -426,7 +426,8 @@ public class PlayerController {
     @StudentImplementationRequired("P2.2")
     public void drawTreasureCards() {
         // TODO: P2.2
-        org.tudalgo.algoutils.student.Student.crash("P2.2 - Remove if implemented");
+        drawnTreasureCards.add(getState().drawTreasureCard());
+        playerObjective = PlayerObjective.CONFIRM_TREASURE_CARDS;
     }
 
     /**
