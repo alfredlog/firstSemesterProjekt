@@ -1,10 +1,6 @@
 package hProjekt.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.BlockingDeque;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.stream.Collectors;
@@ -309,7 +305,23 @@ public class PlayerController {
     @StudentImplementationRequired("P2.2")
     private Map<Color, List<PathCard>> getValidPathCards() {
         // TODO: P2.2
-        return org.tudalgo.algoutils.student.Student.crash("P2.2 - Remove if implemented");
+        Set<PathCard> pathCards = player.getPathCards();
+        List<PathCard> pathCardsToadd = new ArrayList<>();
+        Set<Color> colors = getState().getTreasureTrails().entrySet().stream()
+            .map(Map.Entry::getKey)
+            .distinct()
+            .collect(Collectors.toSet());
+        for (Color color : colors)
+        {
+            for (PathCard pathCard : pathCards) {
+                if(getState().canAddCardToTreasureTrail(color, pathCard)) {
+                    pathCardsToadd.add(pathCard);
+                }
+            }
+            validPathCards.put(color, pathCardsToadd);
+            pathCardsToadd.clear();
+        }
+        return validPathCards;
     }
 
     /**
