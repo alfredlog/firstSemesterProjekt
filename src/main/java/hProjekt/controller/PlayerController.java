@@ -470,8 +470,7 @@ public class PlayerController {
                     return x.value();
                 }).reversed())
                 .findFirst().orElse(null);
-
-
+            player.getGoldCards().remove(goldCard);
         }
     }
 
