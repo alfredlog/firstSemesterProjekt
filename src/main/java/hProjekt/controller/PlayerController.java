@@ -531,7 +531,23 @@ public class PlayerController {
     @StudentImplementationRequired("P2.4")
     public void useAmulet(final AmuletAction amuletAction) throws IllegalActionException {
         // TODO: P2.4
-        org.tudalgo.algoutils.student.Student.crash("P2.4 - Remove if implemented");
+        Tile tile=player.getHexGrid().getTileAt(player.getPosition());
+        int initialDriveCount=driveCount;
+        PlayerObjective initial=playerObjective;
+        if(!tile.hasAmulet()){
+            throw new IllegalActionException("...");
+        }
+        else {
+            if(amuletAction==AmuletAction.REMOVE_TILE) playerObjective=PlayerObjective.SELECT_TILE_TO_REMOVE;
+            else if(amuletAction==AmuletAction.PLAY_HINT) playerObjective=PlayerObjective.PLAY_PATH_CARD;
+            else if(amuletAction==AmuletAction.EXTRA_DRIVE){
+                driveCount= playerObjective==PlayerObjective.SELECT_TILE_TO_REMOVE?initialDriveCount:0;
+            }
+            else if(amuletAction==AmuletAction.REDRAW_PATH_CARDS){
+                drawPathCards(Config.MAX_CARDS_IN_HAND | Config.MAX_CARDS_IN_HAND_WITH_TWO_PLAYERS);
+            }
+        }
+        playerObjective=initial;
     }
 
     /**
