@@ -309,7 +309,6 @@ public class PlayerController {
         List<PathCard> pathCardsToadd = new ArrayList<>();
         Set<Color> colors = getState().getTreasureTrails().entrySet().stream()
             .map(Map.Entry::getKey)
-            .distinct()
             .collect(Collectors.toSet());
         for (Color color : colors)
         {
