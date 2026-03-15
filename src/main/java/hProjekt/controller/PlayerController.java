@@ -487,6 +487,14 @@ public class PlayerController {
     @StudentImplementationRequired("P2.4")
     public void collectAmulet() throws IllegalActionException {
         // TODO: P2.4
+        Tile tile=player.getHexGrid().getTileAt(player.getPosition());
+        if(tile.hasAmulet()){
+            player.addAmulets(1);
+            tile.setHasAmulet(false);
+        }
+        else{
+            throw new IllegalActionException("...");
+        }
         org.tudalgo.algoutils.student.Student.crash("P2.4 - Remove if implemented");
     }
 
