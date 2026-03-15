@@ -495,7 +495,6 @@ public class PlayerController {
         else{
             throw new IllegalActionException("...");
         }
-        org.tudalgo.algoutils.student.Student.crash("P2.4 - Remove if implemented");
     }
 
     /**

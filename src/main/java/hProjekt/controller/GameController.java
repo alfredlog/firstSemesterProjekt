@@ -288,7 +288,12 @@ public class GameController {
     @StudentImplementationRequired("P2.5")
     private void curse(final List<Player> windroses) {
         // TODO: P2.5
-        org.tudalgo.algoutils.student.Student.crash("P2.5 - Remove if implemented");
+        playerControllers.entrySet().stream()
+                .forEach(x->{
+                    if(windroses.contains(x.getKey())) {
+                        withActivePlayer(x.getValue(), () -> x.getValue().waitForNextAction(PlayerObjective.ACCEPT_CURSE));
+                    }
+                });
     }
 
     /**
