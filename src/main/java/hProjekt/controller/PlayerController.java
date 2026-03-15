@@ -391,7 +391,13 @@ public class PlayerController {
     @StudentImplementationRequired("P2.3")
     public void collectTreasure(final Color trailColor) throws IllegalActionException {
         // TODO: P2.3
-        org.tudalgo.algoutils.student.Student.crash("P2.3 - Remove if implemented");
+        Set<Tile> e=getState().evaluateTreasureTrail(trailColor);
+        if(e.size()==1 && player.getPosition().equals(e.stream().findFirst().get().getPosition())) {
+            gameController.collectTreasure(trailColor);
+        }
+        else {
+            throw new IllegalActionException("...");
+        }
     }
 
     /**
