@@ -550,7 +550,18 @@ public class PlayerController {
     @StudentImplementationRequired("P2.1")
     public void drive(final Tile targetTile) throws IllegalActionException {
         // TODO: P2.1
-        org.tudalgo.algoutils.student.Student.crash("P2.1 - Remove if implemented");
+        boolean verify= getDrivableTiles().contains(targetTile) && driveCount!=Config.DRIVE_LIMIT;
+        if(verify) {
+            player.setPosition(targetTile.getPosition());
+            driveCount++;
+            if(driveCount < Config.DRIVE_LIMIT) {
+                playerObjective= PlayerObjective.DRIVE;
+            }
+        }
+        else{
+            throw new IllegalActionException("Drive limit reached or target tile cannot be driven to.");
+        }
+
     }
 
     // Path Cards
