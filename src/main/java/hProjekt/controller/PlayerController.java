@@ -574,7 +574,14 @@ public class PlayerController {
     @StudentImplementationRequired("P2.4")
     public void selectTileToRemove(final TilePosition tilePosition, final Color color) throws IllegalActionException {
         // TODO: P2.4
-        org.tudalgo.algoutils.student.Student.crash("P2.4 - Remove if implemented");
+        Tile tile=player.getHexGrid().getTileAt(tilePosition);
+        Set<Tile> cards = getState().evaluateTreasureTrail(color);
+        if(cards.contains(tile)) {
+            getState().addCardToTreasureTrail(color, new RemoveTileCard(tilePosition));
+        }
+        else{
+            throw new IllegalActionException("...");
+        }
     }
 
     /**
