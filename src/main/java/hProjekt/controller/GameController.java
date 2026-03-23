@@ -269,6 +269,15 @@ public class GameController {
     @StudentImplementationRequired("P2.6")
     private Stack<TreasureCard> drawAndShuffleTreasureCards(final List<PathCard> trail) {
         // TODO: P2.6
+        int numberOfCards=0;
+        playerControllers.entrySet().stream().forEach(entry -> {
+            for(final PathCard card : trail) {
+                if(card.getPlayer() == entry.getKey()) {
+
+                }
+            }
+        })
+
         return org.tudalgo.algoutils.student.Student.crash("P2.6 - Remove if implemented");
     }
 
@@ -325,7 +334,16 @@ public class GameController {
     @StudentImplementationRequired("P2.6")
     private Player offerTreasure(final GoldCard card, final List<Player> windroses) {
         // TODO: P2.6
-        return org.tudalgo.algoutils.student.Student.crash("P2.6 - Remove if implemented");
+        for(Player player : windroses) {
+            PlayerController playercontroller= playerControllers.entrySet().stream().filter(x->x.getKey().equals(player)).findFirst().get().getValue();
+            withActivePlayer(playercontroller,()->playercontroller.waitForNextAction(PlayerObjective.ACCEPT_TREASURE));
+            if(playercontroller.hasAcceptedTreasure()){
+                playercontroller.setOfferedGoldCard(card);
+                windroses.remove(player);
+                return player;
+            }
+        }
+        return null;
     }
 
     /**
